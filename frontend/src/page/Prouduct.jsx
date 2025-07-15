@@ -48,39 +48,64 @@ export default function Product() {
         <div>
             <h2>Product List</h2>
             <Link to="/create">
-                <button>Create Product</button>
+                <div class="input-group-append" style={{ textAlign: "end" }}>
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search">Create Product</i>
+                    </button>
+                </div>
             </Link>
 
             {/* Filter Form */}
             <form onSubmit={handleFilter}>
-                <label htmlFor="filter">Filter by category:</label>
-                <input
-                    type="text"
-                    id="filter"
-                    name="category"
-                    value={categoryFilter}
-                    onChange={(e) => setCategoryFilter(e.target.value)}
-                />
-                <br /> <br />
-                <label htmlFor="minPrice">Min Price</label>
-                <input
-                    type="number"
-                    id="minPrice"
-                    name="minPrice"
-                    value={minPrice}
-                    onChange={(e) => setMinPrice(e.target.value)}
-                />
-                <br />
-                <label htmlFor="maxPrice">Min Price</label>
-                <input
-                    type="number"
-                    id="maxPrice"
-                    name="maxPrice"
-                    value={maxPrice}
-                    onChange={(e) => setMaxPrice(e.target.value)}
-                />
-                <br /> <br />
-                <button type="submit">Filter</button>
+                <div class="input-group mb-3" style={{ width: "20% " }}>
+                    <input
+                        type="text"
+                        id="filter"
+                        name="category"
+                        value={categoryFilter}
+                        onChange={(e) => setCategoryFilter(e.target.value)}
+                        class="form-control"
+                        placeholder="Search by Category..."
+                        aria-label="Search"
+                    />
+                </div>
+                <div
+                    style={{ width: "20% " }}
+                    className="input-group input-group-sm mb-2"
+                >
+                    <span className="input-group-text">Min Price</span>
+                    <input
+                        type="text"
+                        id="minPrice"
+                        name="minPrice"
+                        value={minPrice}
+                        onChange={(e) => setMinPrice(e.target.value)}
+                        className="form-control"
+                        aria-label="Amount (to the nearest dollar)"
+                    />
+                    <span className="input-group-text">.00</span>
+                </div>
+                <div
+                    style={{ width: "20% " }}
+                    className="input-group input-group-sm mb-2"
+                >
+                    <span className="input-group-text">Max Price</span>
+                    <input
+                        type="text"
+                        id="maxPrice"
+                        name="maxPrice"
+                        value={maxPrice}
+                        onChange={(e) => setMaxPrice(e.target.value)}
+                        className="form-control"
+                        aria-label="Amount (to the nearest dollar)"
+                    />
+                    <span className="input-group-text">.00</span>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search">Filter</i>
+                    </button>
+                </div>
             </form>
 
             {/* Products List */}
@@ -89,7 +114,7 @@ export default function Product() {
             ) : (
                 <div style={{ display: "flex" }}>
                     {filteredProducts.map((product) => (
-                        <div key={product.id} style={{ marginLeft: "30px" }}>
+                        /*  <div key={product.id} style={{ marginLeft: "30px" }}>
                             <p>
                                 Name: <strong>{product.name}</strong>
                             </p>
@@ -108,6 +133,28 @@ export default function Product() {
                                     marginTop: "5px",
                                 }}
                             />
+                        </div> */
+                        <div
+                            classNameName="card"
+                            style={{ width: "14rem" }}
+                            key={product.id}
+                        >
+                            <img
+                                style={{ width: "80% " }}
+                                src={`http://localhost:8000/storage/${product.image}`}
+                                alt={product.name}
+                            />
+                            <div classNameName="card-body">
+                                <h5 classNameName="card-title">
+                                    {product.name}
+                                </h5>
+                                <p classNameName="card-text">
+                                    {product.description}
+                                </p>
+                                <a href="" classNameName="btn btn-primary">
+                                    ${product.price}
+                                </a>
+                            </div>
                         </div>
                     ))}
                 </div>

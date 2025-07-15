@@ -28,7 +28,6 @@ export default function ProductForm() {
             );
     }, []);
 
-    // Handle form input
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
         setFormData((prev) => ({
@@ -96,11 +95,11 @@ export default function ProductForm() {
                 />{" "}
                 <br />
                 <br />
-                <label>Image:</label>
+                <label>Image: </label>
                 <input name="image" type="file" onChange={handleChange} />{" "}
                 <br />
                 <br />
-                <label>Category:</label>
+                <label>Category: </label>
                 <select name="category_id" onChange={handleChange}>
                     <option value="">-- Select Category --</option>
                     {categories.map((cat) => (

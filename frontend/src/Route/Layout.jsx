@@ -1,13 +1,15 @@
 import React from "react";
 import Header from "../page/Header";
-import Content from "../page/Content";
-import Prouduct from "../page/Prouduct";
+
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
     return (
         <div>
             <Header />
-            <Content />
+            <div style={{ padding: "20px" }}>
+                <Outlet />
+            </div>
         </div>
     );
 }

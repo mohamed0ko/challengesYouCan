@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProductResource;
+
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
+
 
 
 class ProductController extends Controller
@@ -30,6 +30,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         //
@@ -48,13 +49,12 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        // حفظ الصورة
+
         $imagePath = $request->file('image')->store('products', 'public');
 
-        // دمج مسار الصورة مع البيانات
         $validated['image'] = $imagePath;
 
-        // إنشاء المنتج
+
         $product = Product::create($validated);
 
         return response()->json($product, 201);
