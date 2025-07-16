@@ -70,47 +70,93 @@ export default function ProductForm() {
         <div>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <h1>Create Product</h1>
-                <label>Name:</label>
-                <input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                />{" "}
-                <br />
-                <br />
-                <label>Description:</label>
-                <input
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                />{" "}
-                <br />
-                <br />
-                <label>Price:</label>
-                <input
-                    name="price"
-                    type="text"
-                    value={formData.price}
-                    onChange={handleChange}
-                />{" "}
-                <br />
-                <br />
-                <label>Image: </label>
-                <input name="image" type="file" onChange={handleChange} />{" "}
-                <br />
-                <br />
-                <label>Category: </label>
-                <select name="category_id" onChange={handleChange}>
-                    <option value="">-- Select Category --</option>
-                    {categories.map((cat) => (
-                        <option key={cat.id} value={cat.id.toString()}>
-                            {cat.name}
-                        </option>
-                    ))}
-                </select>{" "}
-                <br />
-                <br />
-                <button type="submit">Create</button>
+                <div
+                    className="input-group input-group-sm mb-3"
+                    style={{ width: "30% " }}
+                >
+                    <span
+                        className="input-group-text"
+                        id="inputGroup-sizing-sm"
+                    >
+                        Name
+                    </span>
+                    <input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        type="text"
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                    />
+                </div>
+                <div
+                    className="input-group input-group-sm mb-3"
+                    style={{ width: "30% " }}
+                >
+                    <span
+                        className="input-group-text"
+                        id="inputGroup-sizing-sm"
+                    >
+                        Description
+                    </span>
+                    <input
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        type="text"
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                    />
+                </div>
+
+                <div
+                    style={{ width: "30% " }}
+                    className="input-group input-group-sm mb-3"
+                >
+                    <span className="input-group-text"> Price</span>
+                    <input
+                        name="price"
+                        type="text"
+                        value={formData.price}
+                        onChange={handleChange}
+                        className="form-control"
+                        aria-label="Amount (to the nearest dollar)"
+                    />
+                    <span className="input-group-text">.00</span>
+                </div>
+                <div className="mb-3" style={{ width: "30% " }}>
+                    <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        name="category_id"
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Category </option>
+                        {categories.map((cat) => (
+                            <option key={cat.id} value={cat.id.toString()}>
+                                {cat.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="mb-3" style={{ width: "30% " }}>
+                    <label htmlFor="formFileSm" className="form-label">
+                        Images
+                    </label>
+                    <input
+                        name="image"
+                        type="file"
+                        onChange={handleChange}
+                        className="form-control form-control-sm"
+                        id="formFileSm"
+                    />
+                </div>
+
+                <button type="submit" className="btn btn-primary">
+                    Create
+                </button>
             </form>
         </div>
     );
